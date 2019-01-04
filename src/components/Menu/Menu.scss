@@ -1,0 +1,28 @@
+.menu {
+  position: fixed;
+  left: 0;
+  top: 70px;
+  width: 250px;
+  height: calc(100% - 70px);
+  border-right: 1px solid rgba(0,0,0,0.05);
+  background: white;
+  &-filter {
+    padding: 30px 15px;
+    &-name {
+      margin: 0 0 15px 0;
+      font-size: 26px;
+      font-weight: 500;
+    }
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      &-item {
+        margin: 0 5px 5px 0;
+        &:last-of-type {
+          margin: 0 5px 0 0;
+        }
+      }
+    }
+  }
+}

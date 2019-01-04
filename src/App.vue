@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navigation />
+    <Menu />
     <main class="main">
       <el-row :gutter="30">
         <el-col :md="8" :lg="6" v-for="(item, index) in items" :key="index" >
@@ -18,11 +19,13 @@
 
 <script>
 import Navigation from './components/Navigation/Navigation.vue';
+import Menu from './components/Menu/Menu.vue';
 
 export default {
   name: 'App',
   components: {
-    Navigation  
+    Navigation,
+    Menu  
   },
   data: () => ({
     items: [

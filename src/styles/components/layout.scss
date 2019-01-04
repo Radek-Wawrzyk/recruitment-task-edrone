@@ -1,12 +1,18 @@
 * { box-sizing: border-box; }
 
+//Body
+
+body {
+  background: #f3f6f9;
+}
+
 //Main
 
 .main {
   position: relative;
-  margin: 70px 0 0 200px;
+  margin: 70px 0 0 250px;
   padding: 30px;
-  width: calc(100% - 200px);
+  width: calc(100% - 250px);
 }
 
 .image {
