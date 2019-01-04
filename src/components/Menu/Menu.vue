@@ -1,5 +1,5 @@
 <template>
-  <aside class="menu">
+  <aside class="menu" :class="{'active': menuStatus}">
     <div class="menu-filter">
       <h2 class="menu-filter-name">Category</h2>
       <ul class="menu-filter-list">
@@ -65,7 +65,12 @@ export default {
       food: false,
       poland: false,
     }
-  })
+  }),
+  computed: {
+    menuStatus() {
+      return this.$store.state.menuStatus;
+    }
+  }
 };
 
 </script>

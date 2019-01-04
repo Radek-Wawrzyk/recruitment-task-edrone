@@ -8,15 +8,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid $lightBorder;
   z-index: 100;
   background: white;
+  &-col {
+    position: relative;
+  }
+  &-search {
+
+  }
   &-logo {
-    width: 80px;
-    img {
-      width: 100%;
-      height: auto;
-    }
+    font-style: italic;
+    font-weight: 600;
+    margin: 0 15px 0 0;
   }
   .el-dropdown {
     .el-button {
@@ -25,6 +29,91 @@
     svg {
       width: 15px;
       height: auto;
+    }
+  }
+}
+
+//Hamburger menu
+
+.navigation-button {
+  display: none;
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  &-bar {
+    display: block;
+    width: 100%;
+    margin-bottom: 4px;
+    height: 2px;
+    background: #2c3e50;
+    border-radius: 40px;
+    transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+    transform-origin: 0 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &.active {
+    .navigation-button-bar:nth-child(1) {
+      transform: translate(4px, 0) rotate(45deg);
+    }
+    .navigation-button-bar:nth-child(2) {
+      transform: translate(10px, 0);
+      opacity: 0;
+    }
+    .navigation-button-bar:nth-child(3) {
+      transform: translate(2px, 2px) rotate(-45deg);
+    }
+    .navigation-button-bar {
+      transform: translate3d(0, 80px, 0) scale(1, 1);
+      transition: transform 0.8s ease, opacity 0.3s;
+      &:hover:after {
+        opacity: 1;
+        transform: translate3d(0, 16px, 0);
+      }
+    }
+  }
+}
+
+//Media 
+
+@media screen and (max-width: $md) {
+  .navigation {
+    padding: 0 15px;
+    &-button {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: $xs) {
+  .navigation {
+    &-logo {
+      display: none;
+    }
+    &-col:first-of-type {
+      width: 30px;
+      height: 30px;
+    }
+    &-button {
+      right: 0;
+    }
+    &-col:nth-of-type(2) {
+      text-align: center;
+    }
+    &-search {
+      max-width: 150px;
     }
   }
 }

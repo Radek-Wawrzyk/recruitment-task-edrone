@@ -1,13 +1,16 @@
 <template>
   <nav class="navigation">
     <div class="navigation-col">
-      <figure class="navigation-logo">
-        <img src="https://d3vhsxl1pwzf0p.cloudfront.net/images_2_6/v2/logo.svg" alt="Endrone" />
-      </figure>
+      <h1 class="navigation-logo">endrone</h1>
+      <button class="navigation-button" :class="{'active': menuStatus}" @click="toggleMenu" :aria-expanded="menuStatus ? 'true' : 'false'">
+        <span class="navigation-button-bar"></span>
+        <span class="navigation-button-bar"></span>
+        <span class="navigation-button-bar"></span>
+      </button> 
     </div>
     <div class="navigation-col">
-      <el-input
-        placeholder="Type something"
+      <el-input class="navigation-search"
+        placeholder="Search"
         v-model="search">
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
       </el-input>
@@ -38,7 +41,19 @@ export default {
   data: () => ({
     search: '',
     menuToggle: false
-  })
+  }),
+  methods: {
+    toggleMenu() {
+      if ( window.innerWidth <= 1024) {
+        this.$store.commit('toggleMenu');
+      }
+    }
+  },
+  computed: {
+    menuStatus() {
+      return this.$store.state.menuStatus;
+    }
+  }
 };
 
 </script>

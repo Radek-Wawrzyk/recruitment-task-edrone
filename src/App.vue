@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <Navigation />
     <Menu />
     <main class="main">
@@ -14,18 +14,21 @@
         </el-col>
       </el-row>
     </main>
+    <Overflow />
   </div>
 </template>
 
 <script>
 import Navigation from './components/Navigation/Navigation.vue';
 import Menu from './components/Menu/Menu.vue';
+import Overflow from './components/Overflow/Overflow.vue';
 
 export default {
   name: 'App',
   components: {
     Navigation,
-    Menu  
+    Menu,
+    Overflow 
   },
   data: () => ({
     items: [

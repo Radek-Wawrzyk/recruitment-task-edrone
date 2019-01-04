@@ -4,8 +4,9 @@
   top: 70px;
   width: 250px;
   height: calc(100% - 70px);
-  border-right: 1px solid rgba(0,0,0,0.05);
+  border-right: 1px solid $lightBorder;
   background: white;
+  z-index: 100;
   &-filter {
     padding: 30px 15px;
     &-name {
@@ -23,6 +24,28 @@
           margin: 0 5px 0 0;
         }
       }
+    }
+  }
+}
+
+//Media 
+
+@media screen and (max-width: $md) {
+  .menu {
+    transform: translate3d(-250px, 0, 0);
+    transition: transform 0.25s;
+    overflow-y: auto;
+    
+    &.active {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+@media screen and (max-width: $xs) {
+  .menu {
+    &-filter-name {
+      font-size: 20px;
     }
   }
 }

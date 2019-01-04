@@ -6,7 +6,11 @@ body {
   background: #f3f6f9;
 }
 
-//Main
+//Global 
+
+.app {
+  position: relative;
+}
 
 .main {
   position: relative;
@@ -21,4 +25,12 @@ body {
 }
 .el-card {
   margin: 0 0 30px 0;
+}
+
+@media screen and (max-width: $md) {
+  .main {
+    width: 100%;
+    margin: 70px 0 0 0;
+    padding: 15px;
+  }
 }
