@@ -1,1 +1,18 @@
 * { box-sizing: border-box; }
+
+//Main
+
+.main {
+  position: relative;
+  margin: 70px 0 0 200px;
+  padding: 30px;
+  width: calc(100% - 200px);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+.el-card {
+  margin: 0 0 30px 0;
+}
