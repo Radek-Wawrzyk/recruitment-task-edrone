@@ -8,7 +8,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     menuStatus: false,
-    recipes: []
+    recipes: [],
+    cart: []
   },
   mutations: {
     toggleMenu: state => {
@@ -16,6 +17,16 @@ export default new Vuex.Store({
     },
     setRecipes: (state, recipes) => {
       state.recipes = [... recipes.data.meals];
+    },
+    addToFavorites: (state, recipe) => {
+      state.cart.push(recipe);
+    },
+    deleteFromCart: (state, recipeID) => {
+      state.cart.forEach((recipe, index) => {
+        if (recipe.idMeal === recipeID) {
+          state.cart.splice(index, 1);
+        }
+      })
     }
   },
   actions: {
