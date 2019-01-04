@@ -1,0 +1,42 @@
+.el-dropdown {
+  .el-button {
+    padding: 10px 15px;
+  }
+  svg {
+    width: 15px;
+    height: auto;
+  }
+}
+
+.dropdown {
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    &:first-of-type {
+      &:hover, &:focus {
+        cursor: auto;
+        background: initial;
+        color: #606266;
+      }
+    }
+    img {
+      width: 50px;
+      height: auto;
+    }
+    &-name {
+      margin: 0 10px;
+    }
+    &-btn {
+      padding: 8px;
+      border: none;
+      background: none;
+      font-size: 18px;
+      &:hover, &:focus {
+        cursor: pointer;
+        color: #409EFF;
+      }
+    }
+  }
+}

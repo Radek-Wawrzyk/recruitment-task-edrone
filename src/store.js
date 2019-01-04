@@ -11,6 +11,11 @@ export default new Vuex.Store({
     recipes: [],
     cart: []
   },
+  getters: {
+    favouritesLenght: state => {
+      return state.cart.length;
+    }
+  },
   mutations: {
     toggleMenu: state => {
       state.menuStatus =! state.menuStatus;
@@ -21,7 +26,7 @@ export default new Vuex.Store({
     addToFavorites: (state, recipe) => {
       state.cart.push(recipe);
     },
-    deleteFromCart: (state, recipeID) => {
+    deleteFromFavourite: (state, recipeID) => {
       state.cart.forEach((recipe, index) => {
         if (recipe.idMeal === recipeID) {
           state.cart.splice(index, 1);
