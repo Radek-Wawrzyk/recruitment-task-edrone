@@ -1,0 +1,39 @@
+.recipe {
+  width: 25%;
+  padding: 15px;
+  &-content {
+    border: 1px solid $lightBorder;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  &-img {
+    width: 100%;
+    height: auto;
+  }
+  &-name {
+    height: 60px;
+    padding: 0 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-favorite {
+    position: absolute;
+    right: 10px;
+    bottom: 70px;
+    background: none;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+    svg {
+      width: 20px;
+      height: auto;
+      path {
+        fill: #f56c6c;
+      }
+    }
+  }
+}
