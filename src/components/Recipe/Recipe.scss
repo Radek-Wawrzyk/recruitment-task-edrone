@@ -37,3 +37,24 @@
     }
   }
 }
+
+//media
+
+@media screen and (max-width: $lg) {
+  .recipe {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .recipe {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: $xs) {
+  .recipe {
+    width: 100%;
+    padding: 15px 0;
+  }
+}
