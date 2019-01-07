@@ -11,6 +11,7 @@
     <div class="navigation-col">
       <el-input class="navigation-search"
         placeholder="Search"
+        @change="searchRecipe"
         v-model="search">
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
       </el-input>
@@ -38,6 +39,9 @@ export default {
       if ( window.innerWidth <= 1024) {
         this.$store.commit('toggleMenu');
       }
+    },
+    searchRecipe() {
+      this.$store.commit('searchRecipe', this.search);
     }
   },
   computed: {

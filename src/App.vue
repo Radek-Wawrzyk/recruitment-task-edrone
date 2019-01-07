@@ -8,6 +8,7 @@
       </ul>
     </main>
     <Overflow />
+    <router-view />
   </div>
 </template>
 

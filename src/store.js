@@ -13,7 +13,12 @@ export default new Vuex.Store({
   },
   getters: {
     favouritesLenght: state => {
-      return state.cart.length;
+      if (state.cart) {
+        return state.cart.length;
+      }
+    },
+    openedRecipe: state => id => {
+      return state.recipes.filter(recipe => recipe.idMeal === id);
     }
   },
   mutations: {
