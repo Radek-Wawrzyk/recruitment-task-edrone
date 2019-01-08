@@ -10,22 +10,11 @@ export default new Vuex.Store({
     menuStatus: false,
     recipes: [],
     searchQuery: '',
+    filterOn: false,
     cart: [],
-    categories: {
-      food: false,
-      vegeterian: false,
-      desert: false,
-    },
-    area: {
-      stockholm: false,
-      cracow: false,
-      poland: false,
-    },
-    tags: {
-      vegeterian: false,
-      food: false,
-      poland: false,
-    }
+    checkedCategories: [],
+    checkedAreas: [],
+    checkedTags: []
   },
   getters: {
     favouritesLenght: state => {
@@ -37,7 +26,22 @@ export default new Vuex.Store({
       return state.recipes.filter(recipe => recipe.idMeal === id);
     },
     recipes: state => {
-      return state.searchQuery == '' ? state.recipes : state.recipes.filter(recipe => recipe.strMeal.toLowerCase().includes(state.searchQuery));
+      let result = state.searchQuery == '' ? state.recipes : state.recipes.filter(recipe => recipe.strMeal.toLowerCase().includes(state.searchQuery));
+
+      if (state.filterOn) {
+
+        if (state.checkedCategories.length >= 1) {
+          result = result.filter(recipe => state.checkedCategories.includes(recipe.strCategory));
+        } 
+        if (state.checkedAreas.length >= 1) {
+          result = result.filter(recipe => state.checkedAreas.includes(recipe.strArea));
+        }
+        if (state.checkedTags.length >= 1) {
+          result = result.filter(recipe => state.checkedTags.includes(recipe.strTags));
+        }
+      }
+      
+      return result;
     }
   },
   mutations: {
