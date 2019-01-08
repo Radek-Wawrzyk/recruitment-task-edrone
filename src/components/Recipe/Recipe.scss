@@ -1,6 +1,17 @@
 .recipe {
   width: 25%;
   padding: 15px;
+  a {
+    text-decoration: none;
+    &:hover, &:focus {
+      .recipe-name {
+        color: $primary;
+      }
+      .recipe-img::before {
+        background: rgba($primary, .5);
+      }
+    }
+  }
   &-content {
     border: 1px solid $lightBorder;
     border-radius: 4px;
@@ -10,6 +21,21 @@
   &-img {
     width: 100%;
     height: auto;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($primary, .0);
+      transition: background 0.25s;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
   &-name {
     height: 60px;
@@ -18,14 +44,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    a {
-      color: #3d3d3d;
-      text-decoration: none;
-      transition: color 0.25s;
-      &:hover, &:focus {
-        color: $primary;
-      }
-    }
+    color: #3d3d3d;
+    transition: color 0.25s;
   }
   &-favorite {
     position: absolute;
