@@ -1,6 +1,8 @@
 # Recruitment-task
 Recruitment task for the [edrone]
 
+Live version: [live]
+
 ### About
 I created UI/UX based on image from endrone. Application is based on Vue.js with Vue-router and Vuex and Element desktop UI library which support Vue and components architecture. I had some problems with API, cause I had to edit API properties for render and deleted blank unnecessary objects. However, at the end, I'm satisfacted from this results. 
 
@@ -50,3 +52,4 @@ $ npm run build
 [edrone]: https://edrone.me/en/
 [TheMealDB]: https://www.themealdb.com/
 [Element]: https://element.eleme.io/#/en-US
+[live]: https://kind-joliot-41a03d.netlify.com/
