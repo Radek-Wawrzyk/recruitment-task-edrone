@@ -11,15 +11,15 @@ export default new Vuex.Store({
     recipes: [],
     searchQuery: '',
     filterOn: false,
-    cart: [],
+    favourites: [],
     checkedCategories: [],
     checkedAreas: [],
     checkedTags: []
   },
   getters: {
     favouritesLenght: state => {
-      if (state.cart) {
-        return state.cart.length;
+      if (state.favourites) {
+        return state.favourites.length;
       }
     },
     openedRecipe: state => id => {
@@ -56,24 +56,27 @@ export default new Vuex.Store({
       state.recipes = [... recipes.data.meals];
     },
     addToFavorites: (state, recipe) => {
-      state.cart.push(recipe);
+      state.favourites.push(recipe);
+
+      localStorage.setItem('Favourites', JSON.stringify(state.favourites));
     },
     setFavourites: state => {
-      if (localStorage.getItem('Favourites')) {
+      const storage = localStorage.getItem('Favourites');
 
-
-
-        console.log('We have items in local storage');
-      } else {
-        console.log('no items in local storage');
+      if (storage) {
+        state.favourites = JSON.parse(storage);
       }
     },
     deleteFromFavourite: (state, recipeID) => {
-      state.cart.forEach((recipe, index) => {
+
+      state.favourites.forEach((recipe, index) => {
         if (recipe.idMeal === recipeID) {
-          state.cart.splice(index, 1);
+          state.favourites.splice(index, 1);
         }
       })
+      
+      //Overwrite localstorage
+      localStorage.setItem('Favourites', JSON.stringify(state.favourites));
     },
     searchRecipe: (state, query) => {
       state.searchQuery = query;

@@ -31,7 +31,7 @@ export default {
   name: 'Favourites',
   computed: {
     favourites() {
-      return this.$store.state.cart;
+      return this.$store.state.favourites;
     },
     favouritesLenght() {
       return this.$store.getters.favouritesLenght;

@@ -21,8 +21,6 @@ export default {
   },
   created() {
     this.$store.dispatch('downloadRecipes');
-
-    localStorage.setItem('Favourites', 'test');
     this.$store.commit('setFavourites');
   }
 };
