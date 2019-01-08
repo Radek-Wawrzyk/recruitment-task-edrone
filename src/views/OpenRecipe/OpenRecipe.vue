@@ -54,8 +54,6 @@ export default {
         ingredient.includes("strIngredient")
       );
 
-      console.log(ingredientsKeys);
-
       //Make array from ingredients and measures
       const ingredients = ingredientsKeys.reduce((reduced, itemKey) => {
         const itemIndex = itemKey.slice(13);
@@ -70,8 +68,6 @@ export default {
       }, []);
 
       Object.assign(recipe, { ingredients });
-
-      console.log(recipe.ingredients);
 
       //Get YouTube movie ID
 
