@@ -9,5 +9,30 @@
       margin: 0 0 15px 0;
       text-align: justify;
     }
+    &-link {
+      margin: 25px 0 0 0;
+      a {
+        color: $primary;
+        text-decoration: none
+      }
+    }
+    iframe {
+      width: 100%;
+      margin: 25px 0;
+      display: block;
+    }
+  }
+}
+
+.el-dialog {
+  width: 100%;
+  max-width: 800px;
+}
+
+//Media 
+
+@media screen and (max-width: 850px) {
+  .el-dialog {
+    width: 96%;
   }
 }

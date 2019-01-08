@@ -1,14 +1,18 @@
 <template>
-  <el-dialog :title="recipe.strMeal" :visible.sync="dialogVisible" class="dialog" :before-close="close">
+  <el-dialog :title="recipe.strMeal" :visible.sync="dialogVisible" class="dialog" :before-close="close" style="width: 100%;">
     <div class="recipe">
       <div class="recipe-info">
         <h2 class="recipe-info-title">Instruction</h2>
         <p class="recipe-info-description">{{recipe.strInstructions}}</p>
         <ul class="recipe-info-list">
           <li class="recipe-info-list-item" v-for="(value, key) in recipe.ingredients" :key="key">
-            {{}}
+            {{value}}
           </li>
         </ul>
+        <youtube :video-id="recipe.youTubeId" v-if="recipe.youTubeId"></youtube>
+        <footer class="recipe-info-link" v-if="recipe.strSource">
+          <a :href="recipe.strSource" :aria-label="recipe.strMeal" :title="recipe.strMeal">Source: {{recipe.strSource}}</a>
+        </footer>
       </div>
     </div>
     <span slot="footer" class="dialog-footer">
@@ -18,6 +22,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'OpenRecipe',
   props: [
@@ -37,23 +42,42 @@ export default {
         }
       }
 
-      //Search for ingredients keys
-      const ingredientsKeys = Object.keys(recipe).filter(ingredient =>
-        ingredient.includes("strIngredient")
-      );
+      // //Search for ingredients keys
+      // const ingredientsKeys = Object.keys(recipe).filter(ingredient =>
+      //   ingredient.includes("strIngredient")
+      // );
 
-      console.log(ingredientsKeys);
+      // console.log(ingredientsKeys);
 
-      //Make array from ingredients and measures
-      const ingredients = ingredientsKeys.reduce((reduced, itemKey) => {
-        const itemIndex = itemKey.slice(13);
+      // //Make array from ingredients and measures
+      // const ingredients = ingredientsKeys.reduce((reduced, itemKey) => {
+      //   const itemIndex = itemKey.slice(13);
 
-        reduced.push(Object.assign({}, {[recipe[itemKey]]: recipe['strMeasure' + itemIndex]}));
-        return reduced;
-      }, []);
+      //   reduced.push({[recipe]: recipe['strMeasure' + itemIndex]});
+      //   return reduced;
+      // }, []);
+
+        const ingredientsKeys = Object.keys(recipe).filter(ingredient =>
+          ingredient.includes("strIngredient")
+        );
+
+        const ingredients = ingredientsKeys.reduce((reduced, itemKey) => {
+          const itemIndex = itemKey.slice(-1);
+          reduced.push(Object.assign({}, { [recipe[itemKey]]: recipe['strMeasure' + itemIndex] }));
+          return reduced;
+        }, []);
 
       recipe.ingredients = ingredients;
 
+      //Get YouTube movie ID
+
+      if (recipe.strYoutube) {
+        const splitString = recipe.strYoutube.split('watch?v=');
+        const id = splitString[1];
+        
+        recipe.youTubeId = id;
+      }
+      
       return recipe;
     }
   },
@@ -65,4 +89,4 @@ export default {
 };
 </script>
 
-<style src="./OpenRecipe.scss" scoped lang="scss" />
+<style src="./OpenRecipe.scss" lang="scss" />
