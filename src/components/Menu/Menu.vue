@@ -42,7 +42,6 @@
         </li>
       </ul>
     </div>
-    {{this.$store.state.checkedCategories}}
   </aside>
 </template>
 

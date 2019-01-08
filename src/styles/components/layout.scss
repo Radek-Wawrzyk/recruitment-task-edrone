@@ -19,6 +19,12 @@ body {
   width: calc(100% - 250px);
 }
 
+.no-results {
+  text-align: center;
+  color: #acacac;
+  margin: 50px 0;
+}
+
 //Recipes
 
 .recipes {
@@ -27,13 +33,7 @@ body {
   justify-content: center;
 }
 
-.image {
-  width: 100%;
-  height: auto;
-}
-.el-card {
-  margin: 0 0 30px 0;
-}
+//Media
 
 @media screen and (max-width: $md) {
   .main {
