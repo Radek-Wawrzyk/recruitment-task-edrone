@@ -3,6 +3,7 @@
     <ul class="recipes">
       <Recipe v-for="recipe in recipes" :key="recipe.idMeal" :recipe="recipe" />
     </ul>
+    <router-view />
   </main>
 </template>
 

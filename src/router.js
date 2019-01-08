@@ -10,13 +10,15 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: () => import('./views/Homepage.vue')
+      component: () => import('./views/Homepage.vue'),
+      children: [
+        {
+          path: '/recipe/:id',
+          name: 'OpenRecipe',
+          props: true,
+          component: () => import('./components/OpenRecipe/OpenRecipe.vue')
+        }
+      ]
     },
-    {
-      path: '/recipe/:id',
-      name: 'OpenRecipe',
-      props: true,
-      component: () => import('./components/OpenRecipe/OpenRecipe.vue')
-    }
   ]
 });
