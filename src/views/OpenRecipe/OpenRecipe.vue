@@ -10,10 +10,12 @@
       <div class="recipe-info">
         <h2 class="recipe-info-title">Instruction</h2>
         <p class="recipe-info-description">{{recipe.strInstructions}}</p>
+        <h3 class="recipe-info-title">Ingredients + Measure</h3>
         <ul class="recipe-info-list">
           <li v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ingredient.name}} - {{ingredient.value || 'More or less'}}</li>
         </ul>
         <youtube :video-id="recipe.youTubeId" v-if="recipe.youTubeId"></youtube>
+        <p v-else class="no-results">There is no video...</p>
         <footer class="recipe-info-link" v-if="recipe.strSource">
           <a
             :href="recipe.strSource"
@@ -76,7 +78,7 @@ export default {
       if (recipe.strYoutube) {
         const splitString = recipe.strYoutube.split("watch?v=");
         const id = splitString[1];
-
+        
         recipe.youTubeId = id;
       }
 
