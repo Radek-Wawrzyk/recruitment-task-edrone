@@ -5,8 +5,8 @@
         <h2 class="recipe-info-title">Instruction</h2>
         <p class="recipe-info-description">{{recipe.strInstructions}}</p>
         <ul class="recipe-info-list">
-          <li class="recipe-info-list-item">
-
+          <li class="recipe-info-list-item" v-for="(value, key) in recipe.ingredients" :key="key">
+            {{}}
           </li>
         </ul>
       </div>
@@ -29,28 +29,38 @@ export default {
   computed: {
     recipe() {
       const recipe = this.$store.getters.openedRecipe(this.id)[0];
-      return recipe;
 
-     
+      //Delete blank objects
+      for (const [key, value] of Object.entries(recipe)) {
+        if (value === "") {
+          delete recipe[key];
+        }
+      }
+
+      //Search for ingredients keys
+      const ingredientsKeys = Object.keys(recipe).filter(ingredient =>
+        ingredient.includes("strIngredient")
+      );
+
+      console.log(ingredientsKeys);
+
+      //Make array from ingredients and measures
+      const ingredients = ingredientsKeys.reduce((reduced, itemKey) => {
+        const itemIndex = itemKey.slice(13);
+
+        reduced.push(Object.assign({}, {[recipe[itemKey]]: recipe['strMeasure' + itemIndex]}));
+        return reduced;
+      }, []);
+
+      recipe.ingredients = ingredients;
+
+      return recipe;
     }
   },
   methods: {
     close() {
       this.$router.go(-1);
     }
-  },
-  created() {
-    const recipe = this.recipe;
-
-    for (const [key, value] of Object.entries(recipe)) {
-      if (value === "") {
-        delete recipe[key];
-      }
-    }
-
-    
-
-    console.log(recipe);
   }
 };
 </script>

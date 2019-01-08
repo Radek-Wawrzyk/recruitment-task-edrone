@@ -14,6 +14,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    &:hover {
+      cursor: context-menu;
+    }
     &:first-of-type {
       &:hover, &:focus {
         cursor: auto;
@@ -27,6 +30,12 @@
     }
     &-name {
       margin: 0 10px;
+      text-decoration: none;
+      color: #606266;
+      transition: color 0.25s;
+      &:hover, &:focus {
+        color: $primary;
+      }
     }
     &-btn {
       padding: 8px;

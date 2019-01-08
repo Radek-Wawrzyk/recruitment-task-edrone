@@ -16,7 +16,7 @@ export default new Router({
           path: '/recipe/:id',
           name: 'OpenRecipe',
           props: true,
-          component: () => import('./components/OpenRecipe/OpenRecipe.vue')
+          component: () => import('./views/OpenRecipe/OpenRecipe.vue')
         }
       ]
     },

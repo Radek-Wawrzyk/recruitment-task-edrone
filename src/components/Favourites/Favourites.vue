@@ -15,7 +15,9 @@
       <el-dropdown-item v-else class="dropdown-item">You don't have any favourites recipes</el-dropdown-item>
       <el-dropdown-item class="dropdown-item" v-for="favourite in favourites" :key="favourite.idMeal">
         <img :src="favourite.strMealThumb" :alt="favourite.strMeal" />
-        <p class="dropdown-item-name">{{favourite.strMeal}}</p>
+        <router-link class="dropdown-item-name" :to="'recipe/' + favourite.idMeal" :aria-label="favourite.strMeal" :title="favourite.strMeal">
+          {{favourite.strMeal}}
+        </router-link>  
         <button class="dropdown-item-btn" @click="deteleFromFavourites(favourite)">
           <span class="el-icon-circle-close-outline"></span>
         </button>
