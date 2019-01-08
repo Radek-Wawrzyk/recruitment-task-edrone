@@ -7,7 +7,7 @@
           <el-checkbox v-model="checkedCategories" label="Vegetarian" border @change="filter"></el-checkbox>
         </li>
         <li class="menu-filter-list-item">
-          <el-checkbox v-model="checkedCategories" label="Food" border @change="filter"></el-checkbox>
+          <el-checkbox v-model="checkedCategories" label="Beef" border @change="filter"></el-checkbox>
         </li>
         <li class="menu-filter-list-item">
           <el-checkbox v-model="checkedCategories" label="Desert" border @change="filter"></el-checkbox>

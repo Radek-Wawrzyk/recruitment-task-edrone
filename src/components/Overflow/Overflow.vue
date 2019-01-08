@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow" :class="{'active': menuStatus}"></div>
+  <div class="overflow" :class="{'active': menuStatus}" @click="closeMenu"></div>
 </template>
 
 <script>
@@ -9,6 +9,11 @@ export default {
   computed: {
     menuStatus() {
       return this.$store.state.menuStatus;
+    }
+  },
+  methods: {
+    closeMenu() {
+      this.$store.commit('toggleMenu');
     }
   }
 };
