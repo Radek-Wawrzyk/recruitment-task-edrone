@@ -37,7 +37,11 @@ export default new Vuex.Store({
           result = result.filter(recipe => state.checkedAreas.includes(recipe.strArea));
         }
         if (state.checkedTags.length >= 1) {
-          result = result.filter(recipe => state.checkedTags.includes(recipe.strTags));
+          result = result.filter(recipe => {
+            if (recipe.strTags !== null) {
+              return recipe.strTags.includes(state.checkedTags);
+            }
+          });
         }
       }
       
@@ -53,6 +57,16 @@ export default new Vuex.Store({
     },
     addToFavorites: (state, recipe) => {
       state.cart.push(recipe);
+    },
+    setFavourites: state => {
+      if (localStorage.getItem('Favourites')) {
+
+
+
+        console.log('We have items in local storage');
+      } else {
+        console.log('no items in local storage');
+      }
     },
     deleteFromFavourite: (state, recipeID) => {
       state.cart.forEach((recipe, index) => {
