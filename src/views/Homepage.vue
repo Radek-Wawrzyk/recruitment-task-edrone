@@ -1,8 +1,8 @@
 <template>
   <main class="main">
-    <ul class="recipes">
+    <transition-group tag="ul" class="recipes" name="move-fade">
       <Recipe v-for="recipe in recipes" :key="recipe.idMeal" :recipe="recipe" />
-    </ul>
+    </transition-group>
     <router-view />
   </main>
 </template>
@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     recipes() {
-      return this.$store.state.recipes;
+      return this.$store.getters.recipes;
     }
   }
 };

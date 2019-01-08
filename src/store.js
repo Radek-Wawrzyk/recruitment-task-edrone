@@ -9,7 +9,23 @@ export default new Vuex.Store({
   state: {
     menuStatus: false,
     recipes: [],
-    cart: []
+    searchQuery: '',
+    cart: [],
+    categories: {
+      food: false,
+      vegeterian: false,
+      desert: false,
+    },
+    area: {
+      stockholm: false,
+      cracow: false,
+      poland: false,
+    },
+    tags: {
+      vegeterian: false,
+      food: false,
+      poland: false,
+    }
   },
   getters: {
     favouritesLenght: state => {
@@ -19,6 +35,9 @@ export default new Vuex.Store({
     },
     openedRecipe: state => id => {
       return state.recipes.filter(recipe => recipe.idMeal === id);
+    },
+    recipes: state => {
+      return state.searchQuery == '' ? state.recipes : state.recipes.filter(recipe => recipe.strMeal.toLowerCase().includes(state.searchQuery));
     }
   },
   mutations: {
@@ -37,6 +56,9 @@ export default new Vuex.Store({
           state.cart.splice(index, 1);
         }
       })
+    },
+    searchRecipe: (state, query) => {
+      state.searchQuery = query;
     }
   },
   actions: {

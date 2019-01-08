@@ -11,7 +11,7 @@
     <div class="navigation-col">
       <el-input class="navigation-search"
         placeholder="Search"
-        @change="searchRecipe"
+        @input="searchRecipe"
         v-model="search">
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
       </el-input>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import debounce from "lodash.debounce";
 import Favourites from '../Favourites/Favourites.vue';
 
 export default {
@@ -40,9 +41,9 @@ export default {
         this.$store.commit('toggleMenu');
       }
     },
-    searchRecipe() {
+    searchRecipe: debounce(function() {
       this.$store.commit('searchRecipe', this.search);
-    }
+    }, 500)
   },
   computed: {
     menuStatus() {
