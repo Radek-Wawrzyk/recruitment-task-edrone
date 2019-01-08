@@ -75,7 +75,7 @@ export default {
         const splitString = recipe.strYoutube.split("watch?v=");
         const id = splitString[1];
         
-        recipe.youTubeId = id;
+        Object.assign(recipe, {youTubeId: id});
       }
 
       return recipe;
