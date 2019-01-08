@@ -1,7 +1,7 @@
 <template>
   <nav class="navigation">
     <div class="navigation-col">
-      <h1 class="navigation-logo">endrone</h1>
+      <h1 class="navigation-logo">edrone</h1>
       <button class="navigation-button" :class="{'active': menuStatus}" @click="toggleMenu" :aria-expanded="menuStatus ? 'true' : 'false'">
         <span class="navigation-button-bar"></span>
         <span class="navigation-button-bar"></span>
