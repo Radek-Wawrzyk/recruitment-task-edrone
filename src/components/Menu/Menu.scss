@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   top: 70px;
-  width: 250px;
+  width: 265px;
   height: calc(100% - 70px);
   border-right: 1px solid $lightBorder;
   background: white;
@@ -32,7 +32,7 @@
 
 @media screen and (max-width: $md) {
   .menu {
-    transform: translate3d(-250px, 0, 0);
+    transform: translate3d(-265px, 0, 0);
     transition: transform 0.25s;
     overflow-y: auto;
     
