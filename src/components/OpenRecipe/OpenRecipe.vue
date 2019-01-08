@@ -46,7 +46,9 @@ export default {
       if (value === "") {
         delete recipe[key];
       }
-    } 
+    }
+
+    
 
     console.log(recipe);
   }
